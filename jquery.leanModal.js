@@ -24,6 +24,13 @@
               
               	var modal_id = $(this).attr("href");
 
+				var params = {modalOpen: true, click_element: this};
+				$(modal_id).trigger('leanModal:beforeOpen', params);
+				if (!params.modalOpen) {
+					e.preventDefault();
+					return;
+				}
+
 				$("#lean_overlay").click(function() { 
                      close_modal(modal_id);                    
                 });
